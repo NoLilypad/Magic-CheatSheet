@@ -12,9 +12,20 @@ def get_config_path():
 def create_config():
     config_path = get_config_path()
     if not os.path.exists(config_path):
-        default_config = {"example_key": "example_value"}
+        default_config = {
+            "mistral": {
+                "api_key": "MISTRAL_API_KEY",
+                "model": "codestral-latest"
+            },
+            "ollama": {
+                "model": "llama3.2:3b",
+                "temperature": 0.2,
+                "url": "http://localhost:11434/api/chat"
+            },
+            "provider": "mistral"
+        }
         with open(config_path, "w") as f:
-            yaml.dump(default_config, f)
+            yaml.dump(default_config, f, default_flow_style=False, allow_unicode=True)
     return config_path
 
 def edit_config():
@@ -29,3 +40,15 @@ def edit_config():
     else:
         print("Config file path not found.")
     sys.exit(0)
+
+# Read and return the configuration as a dictionary
+def get_config():
+    config_path = get_config_path()
+    if os.path.exists(config_path):
+        with open(config_path, "r") as f:
+            try:
+                return yaml.safe_load(f) or {}
+            except yaml.YAMLError as e:
+                print(f"Error reading config: {e}")
+                return {}
+    return {}
