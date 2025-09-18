@@ -1,7 +1,7 @@
 [project]
 
 name = "magic_cheatsheet"
-version = "0.1.0"
+version = "1.0.0"
 description = " A fast and easy to use in-terminal cheatsheet generator "
 authors = [
     { name = "NoLilypad" }
