@@ -7,7 +7,7 @@ httpcore==1.0.9
 httpx==0.28.1
 idna==3.10
 invoke==2.2.0
--e git+ssh://git@github.com/NoLilypad/Magic-CheatSheet.git@1003d7a7cbd9b42172b13c634d89c6f13280c654#egg=magic_cheatsheet
+-e git+ssh://git@github.com/NoLilypad/Magic-CheatSheet.git@23b2973529b92847c1d9d4ec19e5d6d1c0cbbe57#egg=magic_cheatsheet
 mistralai==1.9.10
 ollama==0.5.4
 platformdirs==4.4.0
@@ -17,5 +17,6 @@ python-dateutil==2.9.0.post0
 PyYAML==6.0.2
 six==1.17.0
 sniffio==1.3.1
+termcolor==3.1.0
 typing-inspection==0.4.1
 typing_extensions==4.15.0

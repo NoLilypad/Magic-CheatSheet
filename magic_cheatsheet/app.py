@@ -1,21 +1,30 @@
 from .manage_config import get_config
 import platform
+from termcolor import colored
+
+from mistralai import Mistral
+from ollama import chat
+from ollama import ChatResponse
 
 def get_prompt(command: str, detailed: bool):
     os_name = platform.system()
     if detailed:
-        details = "Detail a lot"
+        details = "- how to uninstall the tool \n Detail un a functionnal way"
     else:
-        details = ""
+        details = "Keep it simple, concise and functionnal, under 20 lines"
     prompt = f"""# Role
 You are an AI agent that generates cheatsheets for cli commands. 
 
 # Mission
 Based on this user command : {command} 
 generate a cheatsheet of this CLI command. 
-
-# Response format
+The cheatsheet should include : 
+- how to install the tool if it is not generally already installed by default
+- The usage pattern of the tool, followed by specific examples
 {details}
+
+# Format
+The cheatsheet will be printed directly in the terminal; format response accordingly to avoid clutter. Simple formatting.
 
 # Data
 User's OS : {os_name}"""
@@ -25,17 +34,36 @@ User's OS : {os_name}"""
 
 def app(command: str, detailed: bool = False):
     config = get_config()
-    print(f"Loaded config: {config}")
-    print(f"Generating cheatsheet for: {command}")
-    
+    provider = config["provider"]    
     prompt = get_prompt(command, detailed)
 
-    if config.provider == "mistral":
-        pass
+    if provider == "mistral":
+        print("Asking MistralAI...")
+        client = Mistral(api_key=config[provider]["api_key"])
+        chat_response = client.chat.complete(
+           model = config[provider]["model"],
+            messages = [
+                {
+                    "role": "user",
+                    "content": prompt,
+                },
+            ]
+        )
 
-    if config.provider == "ollama":
-        pass
+        answer = chat_response.choices[0].message.content
+        print(colored(answer, "dark_grey"))
 
+    if provider == "ollama":
+        model = config[provider]["model"]
 
+        response: ChatResponse = chat(model=model, messages=[
+        {
+            'role': 'user',
+            'content': prompt,
+        },
+        ])
+
+        answer = response.message.content
+        print(colored(answer, "dark_grey"))
 
 
