@@ -1,0 +1,13 @@
+[project]
+
+name = "magic_cheatsheet"
+version = "0.1.0"
+description = " A fast and easy to use in-terminal cheatsheet generator "
+authors = [
+    { name = "NoLilypad" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+
+[project.scripts]
+magic-cheatsheet = "magic_cheatsheet.cli:main"
