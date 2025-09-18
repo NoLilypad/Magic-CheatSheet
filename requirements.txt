@@ -7,7 +7,7 @@ httpcore==1.0.9
 httpx==0.28.1
 idna==3.10
 invoke==2.2.0
--e git+ssh://git@github.com/NoLilypad/Magic-CheatSheet.git@23b2973529b92847c1d9d4ec19e5d6d1c0cbbe57#egg=magic_cheatsheet
+-e git+ssh://git@github.com/NoLilypad/Magic-CheatSheet.git@026f4a2a81f1884d9f5146f12c5baa943b7c730c#egg=magic_cheatsheet
 mistralai==1.9.10
 ollama==0.5.4
 platformdirs==4.4.0
