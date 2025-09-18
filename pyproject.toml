@@ -9,5 +9,12 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.8"
 
+
+[project.optional-dependencies]
+all = [
+    "platformdirs",
+    "pyyaml"
+]
+
 [project.scripts]
-magic-cheatsheet = "magic_cheatsheet.cli:main"
+magic_cheatsheet = "magic_cheatsheet.cli:main"
