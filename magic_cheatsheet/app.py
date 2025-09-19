@@ -13,7 +13,7 @@ def app(command: str, detailed: bool = False):
     prompt = get_prompt(command, detailed)
 
     if provider == "mistral":
-        print("Asking MistralAI...")
+        print(colored("Asking to MistralAI...", "dark_grey"))
         client = Mistral(api_key=config[provider]["api_key"])
         chat_response = client.chat.complete(
            model = config[provider]["model"],
@@ -26,9 +26,11 @@ def app(command: str, detailed: bool = False):
         )
 
         answer = chat_response.choices[0].message.content
-        print(colored(answer, "dark_grey"))
+        print(colored(answer, "white", attrs=["dark"]))
 
     if provider == "ollama":
+        print(colored("Asking Ollama...", "light_grey"))
+
         model = config[provider]["model"]
 
         response: ChatResponse = chat(model=model, messages=[
@@ -39,6 +41,6 @@ def app(command: str, detailed: bool = False):
         ])
 
         answer = response.message.content
-        print(colored(answer, "dark_grey"))
+        print(colored(answer, "white", attrs=["bold"]))
 
 

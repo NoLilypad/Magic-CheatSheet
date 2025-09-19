@@ -19,7 +19,6 @@ def create_config():
             },
             "ollama": {
                 "model": "llama3.2:3b",
-                "temperature": 0.2,
                 "url": "http://localhost:11434/api/chat"
             },
             "provider": "mistral"
