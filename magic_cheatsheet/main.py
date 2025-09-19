@@ -11,7 +11,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Generate a cheatsheet for a given command.")
     parser.add_argument("command", nargs="?", help="The command to generate a cheatsheet for")
-    parser.add_argument("--detailed", action="store_true", help="Show a detailed cheatsheet")
+    parser.add_argument("-d", "--detailed", action="store_true", help="Show a detailed cheatsheet")
     parser.add_argument("--version", action="store_true", help="Show the version of Magic-CheatSheet")
     parser.add_argument("--config", action="store_true", help="Configuration of the tool")
 
