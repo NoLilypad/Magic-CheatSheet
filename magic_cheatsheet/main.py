@@ -18,7 +18,7 @@ def main():
     args = parser.parse_args()
 
     if args.version:
-        print("Magic-CheatSheet version 1.0.0")
+        print("Magic-CheatSheet version 1.1.0")
         sys.exit(0)
 
     if args.config:

@@ -5,6 +5,9 @@ from mistralai import Mistral
 from ollama import chat
 from ollama import ChatResponse
 
+def printer(message : str):
+        print(' ')
+        print(colored(message, "white", attrs=["dark"]))
 
 
 def app(command: str, detailed: bool = False):
@@ -26,10 +29,10 @@ def app(command: str, detailed: bool = False):
         )
 
         answer = chat_response.choices[0].message.content
-        print(colored(answer, "white", attrs=["dark"]))
+        printer(answer)
 
     if provider == "ollama":
-        print(colored("Asking Ollama...", "light_grey"))
+        print(colored("Asking Ollama...", "dark_grey"))
 
         model = config[provider]["model"]
 
@@ -41,6 +44,5 @@ def app(command: str, detailed: bool = False):
         ])
 
         answer = response.message.content
-        print(colored(answer, "white", attrs=["bold"]))
-
+        printer(answer)
 
