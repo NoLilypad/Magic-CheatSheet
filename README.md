@@ -30,13 +30,13 @@ echo "alias mg='magic_cheatsheet'" >> ~/.bashrc && source ~/.bashrc
 To generate a cheatsheet for a command using the CLI:
 
 ```bash
-magic-cheatsheet "git rebase"
+magic_cheatsheet "git rebase"
 ```
 
 Use the `--detailed` flag to get more in depth cheat sheets : 
 
 ```bash
-magic-cheatsheet "pipx" -- detailed
+magic_cheatsheet "pipx" -- detailed
 ```
 
 ## Configuration
@@ -44,11 +44,11 @@ magic-cheatsheet "pipx" -- detailed
 To configure your LLM provider : 
 
 ```bash
-magic-cheatsheet --config
+magic_cheatsheet --config
 ```
 
 You can also specify options (see `--help` for all options):
 
 ```bash
-magic-cheatsheet --help
+magic_cheatsheet --help
 ```
