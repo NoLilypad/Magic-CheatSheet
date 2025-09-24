@@ -35,7 +35,7 @@ User's OS : {os_name}"""
 def get_prompt(command: str, detailed: bool):
     os_name = platform.system()
     if detailed:
-        details = "The cheatsheet should be detailed, max 40 mines. Include also how to uninstall the tool"
+        details = "The cheatsheet should be detailed, max 40 lines. Include also how to uninstall the tool"
     else:
         details = "The cheatsheet should be short, max 20 lines."
     prompt = default_prompt.format(command=command, details=details, os_name=os_name)

@@ -4,6 +4,7 @@ from termcolor import colored
 from mistralai import Mistral
 from ollama import chat
 from ollama import ChatResponse
+import sys
 
 def printer(message : str):
         print(' ')
@@ -12,7 +13,23 @@ def printer(message : str):
 
 def app(command: str, detailed: bool = False):
     config = get_config()
-    provider = config["provider"]    
+    
+    # Validate config has required keys
+    if not config:
+        print("Error: Configuration not found. Please run 'magic-cheatsheet --config' to set up.")
+        sys.exit(1)
+    
+    if "provider" not in config:
+        print("Error: No provider specified in config. Please run 'magic-cheatsheet --config' to set up.")
+        sys.exit(1)
+    
+    provider = config["provider"]
+    
+    # Validate provider-specific config
+    if provider not in config:
+        print(f"Error: Configuration for provider '{provider}' not found.")
+        sys.exit(1)
+    
     prompt = get_prompt(command, detailed)
 
     if provider == "mistral":
@@ -31,7 +48,7 @@ def app(command: str, detailed: bool = False):
         answer = chat_response.choices[0].message.content
         printer(answer)
 
-    if provider == "ollama":
+    elif provider == "ollama":
         print(colored("Asking Ollama...", "dark_grey"))
 
         model = config[provider]["model"]
@@ -45,4 +62,8 @@ def app(command: str, detailed: bool = False):
 
         answer = response.message.content
         printer(answer)
+    
+    else:
+        print(f"Error: Unsupported provider '{provider}'. Please use 'mistral' or 'ollama'.")
+        sys.exit(1)
 
