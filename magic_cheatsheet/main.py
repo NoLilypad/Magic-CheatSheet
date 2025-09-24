@@ -26,7 +26,7 @@ def main():
         sys.exit(0)
 
     if not args.command:
-        print("Usage: magic-cheatsheet <command> [--detailed] [--version]")
+        print("Usage: magic-cheatsheet <command> [--detailed] [--version] [--config]")
         sys.exit(1)
 
     app(args.command, args.detailed)

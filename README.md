@@ -36,7 +36,7 @@ magic_cheatsheet "git rebase"
 Use the `--detailed` flag to get more in depth cheat sheets : 
 
 ```bash
-magic_cheatsheet "pipx" -- detailed
+magic_cheatsheet "pipx" --detailed
 ```
 
 ## Configuration

@@ -34,7 +34,7 @@ def edit_config():
         try:
             subprocess.run([editor, config_path])
         except Exception as e:
-            print(f" Error opening config: {e}")
+            print(f"Error opening config: {e}")
             sys.exit(1)
     else:
         print("Config file path not found.")
